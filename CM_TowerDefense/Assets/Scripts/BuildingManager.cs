@@ -59,8 +59,14 @@ public class BuildingManager : MonoBehaviour
             //Se a construção atual não for nula e não estiver próximo de outra igual ou em cima de algum Collider
             if (activeBuildingType != null && CanSpawnBuilding(activeBuildingType, UtilsClass.GetMouseWorldPosition()))
             {
-                //Instancia na posição do mouse
-                Instantiate(activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+                //Só constroi se tiver os recursos necessários
+                if (ResourceManager.Instance.CanAfford(activeBuildingType.constructionResourceCostArray))
+                {
+                    //Gasta os recursos necessários para criar a construção
+                    ResourceManager.Instance.SpendResources(activeBuildingType.constructionResourceCostArray);
+                    //Instancia na posição do mouse
+                    Instantiate(activeBuildingType.prefab, UtilsClass.GetMouseWorldPosition(), Quaternion.identity);
+                }
             }
         }
     }

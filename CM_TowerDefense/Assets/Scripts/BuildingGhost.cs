@@ -6,11 +6,14 @@ public class BuildingGhost : MonoBehaviour
 {
     //O GameObject do sprite da construção
     private GameObject spriteGameObject;
+    //Script do ResourceNearbyOverlay
+    private ResourceNearbyOverlay resourceNearbyOverlay;
 
     private void Awake()
     {
-        //Procura o sprite e atribui
+        //Procura o sprite e o gameObject e atribui
         spriteGameObject = transform.Find("sprite").gameObject;
+        resourceNearbyOverlay = transform.Find("pfResourceNearbyOverlay").GetComponent<ResourceNearbyOverlay>();
 
         //Começa deixando invisível
         Hide();
@@ -29,17 +32,19 @@ public class BuildingGhost : MonoBehaviour
         {
             //Desativa o sprite
             Hide();
+            resourceNearbyOverlay.Hide();
         }
         else
         {
             //Se não, ativa o sprite e deixa o mesmo da construção atual
             Show(e.activeBuildingType.sprite);
+            resourceNearbyOverlay.Show(e.activeBuildingType.resourceGeneratorData);
         }
     }
 
     private void Update()
     {
-        //Sempre estára seguindo o ponteiro do mouse
+        //Sempre estará seguindo o ponteiro do mouse
         transform.position = UtilsClass.GetMouseWorldPosition();
     }
 

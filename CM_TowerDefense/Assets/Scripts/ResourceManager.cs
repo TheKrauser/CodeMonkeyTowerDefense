@@ -69,4 +69,31 @@ public class ResourceManager : MonoBehaviour
     {
         return resourceAmountDict[resourceType];
     }
+
+    //Checa se o jogador tem os recursos necessários da construção selecionada
+    public bool CanAfford(ResourceAmount[] resourceAmountArray)
+    {
+        foreach (ResourceAmount resourceAmount in resourceAmountArray)
+        {
+            if (GetResourceAmount(resourceAmount.resourceType) >= resourceAmount.amount)
+            {
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    //Gasta os recursos caso tenha o necessário
+    public void SpendResources(ResourceAmount[] resourceAmountArray)
+    {
+        foreach (ResourceAmount resourceAmount in resourceAmountArray)
+        {
+            resourceAmountDict[resourceAmount.resourceType] -= resourceAmount.amount;
+        }
+    }
 }

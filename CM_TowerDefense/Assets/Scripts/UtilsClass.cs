@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class UtilsClass
 {
+    //Classe para ser usada em outros scripts sem precisar de refêrencia ou de estar na cena
     private static Camera cam;
     public static Vector3 GetMouseWorldPosition()
     {

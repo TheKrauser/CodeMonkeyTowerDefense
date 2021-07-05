@@ -7,9 +7,13 @@ public class BuildingTypeSelectUI : MonoBehaviour
 {
     //Sprite do ponteiro do Mouse
     [SerializeField] private Sprite arrowSprite;
-    //Dicionário para guardar o Transform da posição dos botões na UI
+
+    //List de Construções a ser ignoradas na hora de criar os botões da UI
     [SerializeField] private List<BuildingTypeSO> ignoreBuildingTypeList;
+
+    //Dicionário para guardar o Transform da posição dos botões na UI
     private Dictionary<BuildingTypeSO, Transform> btnTransformDictionary;
+
     //Posição do botão do ponteiro do Mouse
     private Transform arrowBtn;
     private void Awake()
@@ -86,11 +90,13 @@ public class BuildingTypeSelectUI : MonoBehaviour
     private void Start()
     {
         UpdateActiveBuildingTypeButton();
+        //Se inscreve no evento de OnActiveBuildingChanged
         BuildingManager.Instance.OnActiveBuildingChanged += BuildingManager_OnActiveBuildingTypeChanged;
     }
 
     private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
     {
+        //Sempre que receber o evento realiza a ação de atualizar a UI para a construção ativa
         UpdateActiveBuildingTypeButton();
     }
 

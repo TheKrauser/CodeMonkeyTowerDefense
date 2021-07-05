@@ -14,17 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: HQ
   prefab: {fileID: 6781563717695560819, guid: 4e1a484910d36c34991022b10cb32929, type: 3}
-  resourceGeneratorDataList:
-  - timerMax: 30
+  resourceGeneratorData:
+    timerMax: 1
     resourceType: {fileID: 11400000, guid: 3b91132c3e0ab9d4687275de84651385, type: 2}
-    resourceDetectionRadius: 100
-    maxResourceAmount: 1
-  - timerMax: 30
-    resourceType: {fileID: 11400000, guid: 6f5c93737c3c62d4e831bfa71f34e113, type: 2}
-    resourceDetectionRadius: 100
-    maxResourceAmount: 1
-  - timerMax: 30
-    resourceType: {fileID: 11400000, guid: 343534b7f3a886d4f89790ffb06414cd, type: 2}
     resourceDetectionRadius: 100
     maxResourceAmount: 1
   sprite: {fileID: 21300000, guid: 7030b8e3eb49e8440ae8eb3ec8b45d05, type: 3}
